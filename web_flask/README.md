@@ -6,10 +6,6 @@ An implementation of an AirBnB clone using a web framework.
 
 - [Requirements](#requirements)
 - [Python Scripts](#python-scripts)
-- [HTML/CSS Files](#htmlcss-files)
-- [More Info](#more-info)
-- [Manual QA Review](#manual-qa-review)
-- [Video Library](#video-library)
 - [Tasks](#tasks)
 
 ## Requirements
