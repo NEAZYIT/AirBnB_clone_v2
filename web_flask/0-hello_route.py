@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 This script creates a simple Flask web application with a route
 that displays "Hello HBNB!" on the root URL.
