@@ -30,7 +30,7 @@ class DBStorage:
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(user, pwd, host, db),
                                       pool_pre_ping=True)
-        
+
         if env == "test":
             Base.metadata.drop_all(self.__engine)
 
@@ -65,7 +65,7 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)
-    
+
     def close(self):
         """Close the working SQLAlchemy session."""
         self.__session.close()
