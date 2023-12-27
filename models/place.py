@@ -62,7 +62,6 @@ class Place(BaseModel, Base):
             secondary="place_amenity",
             viewonly=False,
             back_populates="place_amenities",
-            overlaps="place_amenities"
             )
 
     amenity_ids = []
