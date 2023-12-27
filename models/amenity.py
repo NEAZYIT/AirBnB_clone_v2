@@ -23,5 +23,6 @@ class Amenity(BaseModel, Base):
              "Place",
              secondary="place_amenity",
              viewonly=False,
-             back_populates="amenities"
+             back_populates="amenities",
+             overlaps="place_amenities"
              )

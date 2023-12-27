@@ -5,7 +5,7 @@ import os
 import sys
 from flask import Flask, render_template
 from models import storage
-from models.state import State
+from models.state import Stat
 
 # Adding the parent directory to the path
 current_dir = os.path.dirname(os.path.realpath(__file__))
