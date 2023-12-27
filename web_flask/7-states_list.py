@@ -1,17 +1,13 @@
 #!/usr/bin/python3
-""" Starts a Flask web application """
+"""Starts a Flask web application.
 
-import os
-import sys
-from flask import Flask, render_template
+The application listens on 0.0.0.0, port 5000.
+Routes:
+    /states_list: HTML page with a list of all State objects in DBStorage.
+"""
 from models import storage
-from models.state import State
-
-# Adding the parent directory to the path
-current_dir = os.path.dirname(os.path.realpath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
-
+from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -22,7 +18,7 @@ def states_list():
 
     States are sorted by name.
     """
-    states = storage.all(State)
+    states = storage.all("State")
     return render_template("7-states_list.html", states=states)
 
 
