@@ -19,8 +19,7 @@ def display_states():
 @app.route('/states/<id>', methods=['GET'])
 def display_state_cities(id):
     state = storage.get(State, id)
-    if state:
-        return render_template('9-states.html', state=state)
+    return render_template('9-states.html', state=state)
     return render_template('9-states.html', not_found=True)
 
 
