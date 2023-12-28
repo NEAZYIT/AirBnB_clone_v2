@@ -8,9 +8,8 @@ attributes for state name.
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
-from models.city import City
 from sqlalchemy.orm import relationship
-import models
+import os
 
 
 class State(BaseModel, Base):
@@ -24,15 +23,19 @@ class State(BaseModel, Base):
     """
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
-    # For DBStorage
-    cities = relationship("City", backref="state", cascade="all, delete")
 
-    # For FileStorage
-    @property
-    def cities(self):
-        """
-        Returns the list of City instances with state_id
-        equals to the current State.id
-        """
-        all_cities = models.storage.all(City).values()
-        return [city for city in all_cities if city.state_id == self.id]
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+        # For DBStorage
+        cities = relationship("City", backref="state", cascade="all, delete")
+    else:
+        # For FileStorage
+        @property
+        def cities(self):
+            """
+            Returns the list of City instances with state_id
+            equals to the current State.id
+            """
+            from models import storage
+            from models.city import City
+            all_cities = models.storage.all(City).values()
+            return [city for city in all_cities if city.state_id == self.id]
