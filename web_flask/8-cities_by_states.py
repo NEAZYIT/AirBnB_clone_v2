@@ -19,8 +19,9 @@ app.url_map.strict_slashes = False
 
 @app.route('/cities_by_states', methods=['GET'])
 def cities_by_states():
-    states = storage.all(State).values()
-    sorted_states = sorted(states, key=lambda x: x.name)
+    states = storage.all(State)
+    print(type(states))
+    sorted_states = sorted(states.values(), key=lambda x: x.name)
 
     return render_template('8-cities_by_states.html', states=sorted_states)
 
