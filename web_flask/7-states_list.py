@@ -20,7 +20,9 @@ def states_list():
 
     States are sorted by name.
     """
-    states = storage.all(State)
+    states_dict = storage.all(State)
+    states = list(states_dict.values())
+    states.sort(key=lambda state: state.name)
 
     # Log the retrieved states
     logging.debug(f"Retrieved states: {states}")
